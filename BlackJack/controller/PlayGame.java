@@ -4,6 +4,9 @@ import BlackJack.view.IView;
 import BlackJack.model.Game;
 
 public class PlayGame {
+  public enum GameInput {
+    Play, Hit, Stand, Quit
+  }
 
   public boolean Play(Game a_game, IView a_view) {
     a_view.DisplayWelcomeMessage();
@@ -16,21 +19,21 @@ public class PlayGame {
         a_view.DisplayGameOver(a_game.IsDealerWinner());
     }
 
-    int input = a_view.GetInput();
+    GameInput input = a_view.GetInput();
     
-    if (input == 'p')
+    if (input == GameInput.Play)
     {
         a_game.NewGame();
     }
-    else if (input == 'h')
+    else if (input == GameInput.Hit)
     {
         a_game.Hit();
     }
-    else if (input == 's')
+    else if (input == GameInput.Stand)
     {
         a_game.Stand();
     }
 
-    return input != 'q';
+    return input != GameInput.Quit;
   }
 }

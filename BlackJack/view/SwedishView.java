@@ -1,6 +1,8 @@
 package BlackJack.view;
 
-public class SwedishView implements IView 
+import BlackJack.controller.PlayGame.GameInput;
+
+public class SwedishView implements IView
     {
         public void DisplayWelcomeMessage()
         {
@@ -12,18 +14,29 @@ public class SwedishView implements IView
             System.out.println("Skriv 'p' för att Spela, 'h' för nytt kort, 's' för att stanna 'q' för att avsluta\n");
         }
         
-        public int GetInput()
+        public GameInput GetInput()
         {
-          try {
-            int c = System.in.read();
-            while (c == '\r' || c =='\n') {
-              c = System.in.read();
+            try {
+                int c = System.in.read();
+                while (c == '\r' || c == '\n') {
+                    c = System.in.read();
+                }
+                if (c == 'p') {
+                    return GameInput.Play;
+                }
+                if (c == 'h') {
+                    return GameInput.Hit;
+                }
+                if (c == 's') {
+                    return GameInput.Stand;
+                }
+                if (c == 'q') {
+                    return GameInput.Quit;
+                }
+            } catch (java.io.IOException e) {
+                System.out.println("" + e);
             }
-            return c;
-          } catch (java.io.IOException e) {
-            System.out.println("" + e);
-            return 0;
-          }
+            return null;
         }
         
         public void DisplayCard(BlackJack.model.Card a_card)

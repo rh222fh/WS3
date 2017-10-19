@@ -1,6 +1,7 @@
 package BlackJack.view;
+import BlackJack.controller.PlayGame.GameInput;
 
-public class SimpleView implements IView 
+public class SimpleView implements IView
 {
 
   public void DisplayWelcomeMessage()
@@ -10,18 +11,28 @@ public class SimpleView implements IView
           System.out.println("Type 'p' to Play, 'h' to Hit, 's' to Stand or 'q' to Quit\n");
         }
 
-        public int GetInput()
-        {
-          try {
-            int c = System.in.read();
-            while (c == '\r' || c =='\n') {
-              c = System.in.read();
+        public GameInput GetInput() {
+            try {
+                int c = System.in.read();
+                while (c == '\r' || c == '\n') {
+                    c = System.in.read();
+                }
+                if (c == 'p') {
+                    return GameInput.Play;
+                }
+                if (c == 'h') {
+                    return GameInput.Hit;
+                }
+                if (c == 's') {
+                    return GameInput.Stand;
+                }
+                if (c == 'q') {
+                    return GameInput.Quit;
+                }
+            } catch (java.io.IOException e) {
+                System.out.println("" + e);
             }
-            return c;
-          } catch (java.io.IOException e) {
-            System.out.println("" + e);
-            return 0;
-          }
+            return null;
         }
 
         public void DisplayCard(BlackJack.model.Card a_card)
