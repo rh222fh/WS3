@@ -9,7 +9,6 @@ public class Dealer extends Player {
   private IHitStrategy m_hitRule;
 
   public Dealer(RulesFactory a_rulesFactory) {
-
     m_newGameRule = a_rulesFactory.GetNewGameRule();
     m_hitRule = a_rulesFactory.GetHitRule();
 
