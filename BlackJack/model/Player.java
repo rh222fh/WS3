@@ -12,12 +12,7 @@ public class Player {
   {
     m_hand = new LinkedList<Card>();
   }
-  
-  public void DealCard(Card a_addToHand)
-  {
-    m_hand.add(a_addToHand);
-  }
-  
+
   public Iterable<Card> GetHand()
   {
     return m_hand;
@@ -34,6 +29,10 @@ public class Player {
     {
       c.Show(true);
     }
+  }
+
+  public void AddToHand(Card c) {
+      m_hand.add(c);
   }
   
   public int CalcScore()
@@ -66,7 +65,10 @@ public class Player {
             }
         }
     }
-
     return score;
   }
+
+    public int getMaxScore() {
+        return g_maxScore;
+    }
 }
