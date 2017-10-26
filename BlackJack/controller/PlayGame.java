@@ -1,14 +1,28 @@
 package BlackJack.controller;
 
+import BlackJack.model.ICardObserver;
 import BlackJack.view.IView;
 import BlackJack.model.Game;
 
-public class PlayGame {
+public class PlayGame implements ICardObserver{
+  private IView m_view;
+  private Game a_game;
+
+  @Override
+  public void CardDealt() {
+    m_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
+    m_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
+  }
+
   public enum GameInput {
     Play, Hit, Stand, Quit
   }
 
   public boolean Play(Game a_game, IView a_view) {
+    this.a_game = a_game;
+    this.m_view = a_view;
+
+    a_game.getDealer().addSubscriber(this);
     a_view.DisplayWelcomeMessage();
     
     a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());

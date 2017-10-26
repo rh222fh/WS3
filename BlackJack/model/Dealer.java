@@ -2,18 +2,23 @@ package BlackJack.model;
 
 import BlackJack.model.rules.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observer;
+
 public class Dealer extends Player {
 
   private Deck m_deck;
   private INewGameStrategy m_newGameRule;
   private IHitStrategy m_hitRule;
   private IWinStrategy m_winRule;
+  private List<ICardObserver> observers;
 
   public Dealer(RulesFactory a_rulesFactory) {
     m_newGameRule = a_rulesFactory.GetNewGameRule();
     m_hitRule = a_rulesFactory.GetHitRule();
     m_winRule = a_rulesFactory.GetWinRule();
-
+    observers = new ArrayList<>();
   }
 
 
@@ -66,5 +71,17 @@ public class Dealer extends Player {
     a_player.AddToHand(c);
 
     c.Show(showCard);
+
+    for (ICardObserver o: observers) {
+        o.CardDealt();
+    }
+    try {
+      Thread.sleep(2000);
+    }
+    catch (Exception e) {}
+  }
+
+  public void addSubscriber(ICardObserver newObserver) {
+    this.observers.add(newObserver);
   }
 }

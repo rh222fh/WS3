@@ -34,8 +34,6 @@ public class Game {
   
   public boolean Stand()
   {
-    // TODO: Implement this according to Game_Stand.sequencediagram
-
     return m_dealer.Stand();
   }
   
@@ -58,6 +56,8 @@ public class Game {
   {
     return m_player.CalcScore();
   }
-    
-  
+
+  public Dealer getDealer() {
+    return m_dealer;
+  }
 }
