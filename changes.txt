@@ -1,0 +1,21 @@
+-----------------------------------------
+Final submission - Workshop 3 - Changelog
+---------------2017-10-26----------------
+
+- Implemented stand() in the Dealer class, which is called from the method stand() in the Game class.
+
+- Removed hidden dependency by adding enums(Play, Hit, Stand, Quit) that represent what actions can be done.
+
+- Implemented a new class Soft17HitStrategy which implements the IHitStrategy interface, 
+  refactored by moving the DealCard method from Player to Dealer class and modified the DealCard method to make it work for every rule class.
+
+- Implemented the new rules PlayerWinStrategy and DealerWinStrategy, and updated the Dealer to be able to run these rules.
+
+- Added a parameter(boolean) in the DealCard method to show a card after dealing a card, 
+  and refactored by updating the classes AmericanNewGameStrategy and InternationalNewGameStrategy, and by removing duplicate code.
+
+- Implemented the interface ICardObserver. Updated the PlayGame class to implement the interface. Added a list of observers in the Dealer class, and updated DealCard method.
+
+- Removed unnecessary out commented code in Dealer, and a print in Player.
+
+- Updated the class diagram to reflect all the new changes made to the code.
