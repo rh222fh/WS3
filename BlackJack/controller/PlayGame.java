@@ -12,6 +12,11 @@ public class PlayGame implements ICardObserver{
   public void CardDealt() {
     m_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
     m_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
+
+    try {
+      Thread.sleep(2000);
+    }
+    catch (Exception e) {}
   }
 
   public enum GameInput {

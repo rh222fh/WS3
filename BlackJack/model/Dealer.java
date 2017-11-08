@@ -21,7 +21,6 @@ public class Dealer extends Player {
     observers = new ArrayList<>();
   }
 
-
   public boolean NewGame(Player a_player) {
     if (m_deck == null || IsGameOver()) {
       m_deck = new Deck();
@@ -75,10 +74,6 @@ public class Dealer extends Player {
     for (ICardObserver o: observers) {
         o.CardDealt();
     }
-    try {
-      Thread.sleep(2000);
-    }
-    catch (Exception e) {}
   }
 
   public void addSubscriber(ICardObserver newObserver) {

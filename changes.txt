@@ -1,4 +1,11 @@
 -----------------------------------------
+Fix submission - Workshop 3 - Changelog
+---------------2017-11-08----------------
+- Moved pause to controller.
+
+
+
+-----------------------------------------
 Final submission - Workshop 3 - Changelog
 ---------------2017-10-26----------------
 
